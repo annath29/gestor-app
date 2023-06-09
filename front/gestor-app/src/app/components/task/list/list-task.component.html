@@ -1,0 +1,28 @@
+<div class="conteiner mt-5">
+    <div class="row mt-5 justify-content-center">
+        <h1>Lista de Tareas</h1>
+    </div>
+    <div class="row mt-5 justify-content-center">
+        <table class="table mx-5 table-bordered">
+            <thead class="text-center">
+              <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="mt-5 ">
+              <tr *ngFor="let task of tasks">
+                <td>{{task.title}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.state}}</td>
+                <td>@mdo</td>
+              </tr>
+
+            </tbody>
+          </table>
+    </div>
+</div>
+  
+  
