@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.color{
+    background-color: #093881;
+    color: white;
+}
+
+.color-text{
+    color: #093881;
+}
+
+/* label{
+    font-size: medium;
+    font-weight: bolder;
+} */
+.fontIcon{
+    font-size: larger;
+}

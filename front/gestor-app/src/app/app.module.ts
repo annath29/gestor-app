@@ -3,22 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/shared/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/shared/home/home.component';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from './components/shared/shared.module';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    FormsModule,
+    CommonModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

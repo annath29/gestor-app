@@ -5,8 +5,8 @@ import { HomeComponent } from "./components/shared/home/home.component";
 
 const routes:Routes=[
     {
-        path:'',
-        loadChildren:()=> import('./components/task/task.module').then((m)=>m.taskRoutingModule)
+        path:'home',
+        loadChildren:()=> import('./components/shared/shared.module').then((m)=>m.SharedModule)
     },
     {
         path:'task',
@@ -14,7 +14,7 @@ const routes:Routes=[
     },
     {
         path:'**',
-        redirectTo:' '
+        redirectTo:'home'
     }
 ]
 
