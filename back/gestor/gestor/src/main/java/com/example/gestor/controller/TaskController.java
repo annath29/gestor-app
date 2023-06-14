@@ -35,7 +35,7 @@ public class TaskController {
      * @param task
      * @return task created
      */
-    @PostMapping("/all")
+    @PostMapping
     public Task create(@Validated @RequestBody Task task){
 
         return service.saveTask(task);

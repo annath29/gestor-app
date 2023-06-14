@@ -16,4 +16,8 @@ export class TaskService {
   getAll():Observable<Task[]>{
     return  this.http.get<Task[]>(this.apiUrl);
   }
+
+  save(task:Task):Observable<Task>{
+    return this.http.post<Task>(this.apiUrl,task);
+  }
 }

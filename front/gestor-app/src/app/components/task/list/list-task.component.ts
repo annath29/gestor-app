@@ -26,9 +26,9 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
     });
   }
   getAll() {
-    this.service.getAll().subscribe((tasks)=>{
+      this.service.getAll().subscribe((tasks)=>{
       this.tasks=tasks;
-      console.log(tasks)
+      // console.log(tasks)
     });
   }
 
