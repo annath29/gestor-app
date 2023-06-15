@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskService } from '../task.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,14 +13,16 @@ export class FormComponent {
   titulo!:String;
   descripcion!: String;
 
-  constructor(private service: TaskService){}
+  constructor(private service: TaskService,
+    private router:Router){}
   
   submitForm() {
     this.data.emit({
-      titulo:this.titulo,
-      descripcion:this.descripcion
-    })
-    //this.description=this.description;  
+      title:this.titulo,
+      description:this.descripcion
+    });
+    this.router.navigateByUrl('/task/list');
+  
   }
 
 }

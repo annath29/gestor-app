@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
+import { Router } from '@angular/router';
 
 declare var bootstrap: any;
 
@@ -12,8 +13,11 @@ declare var bootstrap: any;
 export class ListTaskComponent implements OnInit,AfterViewInit{
 
   public tasks: Task[] = [];
-
-  constructor(private service: TaskService) { }
+  public check:boolean=true;
+  constructor(
+    private service: TaskService,
+    private router:Router)
+  { }
 
   ngOnInit() {
     this.getAll();
@@ -25,11 +29,11 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
       return new bootstrap.Tooltip(tooltipTriggerEl);
     });
   }
+  
   getAll() {
-      this.service.getAll().subscribe((tasks)=>{
-      this.tasks=tasks;
+    this.service.getAll().subscribe((tasks)=>{
+      this.tasks=tasks;     
       // console.log(tasks)
     });
   }
-
 }

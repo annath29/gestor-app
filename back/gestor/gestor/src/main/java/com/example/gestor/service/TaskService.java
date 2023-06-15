@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 import static java.util.Objects.requireNonNull;
 
@@ -42,7 +43,50 @@ public class TaskService {
      * @param task
      * @return task created
      */
-    public Task saveTask(Task task){
-        return repository.save(task);
+    public Task saveTask(Task task) throws Exception {
+        try{
+            repository.save(task);
+            return task;
+        }
+        catch (Exception error){
+            throw new Exception(error.getMessage());
+        }
+    }
+
+    /**
+     * Update task
+     * @param task
+     * @param id
+     * @return update task
+     * @throws Exception
+     */
+    public Task updateTask(Task task, UUID id) throws Exception {
+        requireNonNull(id);
+        requireNonNull(task);
+
+        if (!repository.existsById(id)){
+            throw new Exception("Tarea no encontrada");
+        }
+
+        var exist=repository.findById(id).orElseThrow();
+        exist.setTitle(task.getTitle());
+        exist.setDescription(task.getDescription());
+
+        return repository.save(exist);
+    }
+
+    /**
+     * Delete by id a task
+     * @param id
+     * @return boolean
+     * @throws Exception
+     */
+    public boolean deleteTask(UUID id) throws Exception {
+        requireNonNull(id);
+        if (!repository.existsById(id)){
+            throw new Exception("Tarea no encontrada");
+        }
+        repository.deleteById(id);
+        return true;
     }
 }

@@ -18,6 +18,18 @@ export class TaskService {
   }
 
   save(task:Task):Observable<Task>{
-    return this.http.post<Task>(this.apiUrl,task);
+    console.log(task);
+    var resultado= this.http.post<Task>(this.apiUrl,task);
+    console.log(resultado);
+    
+    return resultado;
   }
+  update(task:Task,id:String):Observable<Task>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Task>(url,task);
+  }
+  delete(id:string):Observable<boolean>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<boolean>(url)
+    }
 }

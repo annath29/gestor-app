@@ -1,16 +1,16 @@
-<form (ngSubmit)="submitForm()">
-    <div class="container m-5 px-5 border">
-        <div class="my-5 text-center color-text"><h2>{{name}}</h2></div>
+<form>
+    <div class="container mt-5 px-5 border border-primary">
+        <div class="my-5 text-center color-text"><h1>{{name}}</h1></div>
         <div class="form-group">
-            <label for="title">Título:</label>
-            <input type="text" id="titulo" name="titulo" placeholder="Ingrese el titulo" [(ngModel)]="titulo" class="form-control">
+            <label for="title"class="color-text">Título:</label>
+            <input type="text" name="titulo" placeholder="Ingrese el titulo" [(ngModel)]="titulo" class="form-control" maxlength="50">
         </div>
         <div class="form-group">
-            <label for="description">Descripción:</label>
-            <input id="descripcion" name="descripcion" placeholder="Ingrese la descripción"  [(ngModel)]="descripcion" class="form-control">
+            <label for="description" class="color-text">Descripción:</label>
+            <input type="text" name="descripcion" placeholder="Ingrese la descripción"  [(ngModel)]="descripcion" class="form-control" maxlength="80">
         </div>
         <div class="row justify-content-center mb-5">
-            <button type="submit" class="btn color">Crear</button>
+            <button type="submit" class="btn btn-primary btn-lg" (click)="submitForm()">Guardar</button>
         </div>
     </div>
 </form>

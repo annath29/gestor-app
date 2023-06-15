@@ -1,4 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { TaskService } from '../task.service';
+import { Task } from '../task.model';
 
 @Component({
   selector: 'app-create',
@@ -6,9 +8,20 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class CreateComponent {
   @Output() name:String='Crear Tarea';
-  
-  create(data:any){
-    console.log("titulo",data.titulo);    
-    console.log("titulo",data.descripcion);    
+  tarea!:Task;
+  constructor(private service:TaskService){}
+
+  create(data:Task){
+    //console.log("titulo",data.title);    
+   // console.log("descripcion",data.description);    
+
+    this.tarea={
+      title:data.title,
+      description:data.description,
+      state:false
+    }
+
+    this.service.save(this.tarea).subscribe();
+    
   }
 }
