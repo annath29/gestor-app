@@ -54,7 +54,6 @@ public class TaskService {
         }
     }
 
-
     /**
      * Find a task by id
      * @param id
@@ -67,6 +66,30 @@ public class TaskService {
             throw  new Exception("id no encontrado");
         }
         return found;
+    }
+
+    /**
+     * check task complete
+     * @param task
+     * @param id
+     * @return task
+     * @throws Exception
+     */
+    public Task completeTask(Task task, UUID id) throws Exception {
+        requireNonNull(id);
+        requireNonNull(task);
+
+        if (!repository.existsById(id)) {
+            throw new Exception("Tarea no encontrada");
+        }
+
+        var exist = repository.findById(id).orElseThrow();
+        exist.setState(task.getState());
+        return repository.save(exist);
+    }
+
+    public List<Task> findByState(boolean state){
+        return repository.findByState(state);
     }
 
     /**
@@ -87,7 +110,6 @@ public class TaskService {
         var exist=repository.findById(id).orElseThrow();
         exist.setTitle(task.getTitle());
         exist.setDescription(task.getDescription());
-        exist.setState(task.getState());
         return repository.save(exist);
     }
 

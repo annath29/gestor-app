@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MenuComponent } from "./menu/menu.component";
 import { HomeComponent } from "./home/home.component";
+import { FilterComponent } from './filter/filter.component';
 
 const routes: Routes =[
     {
@@ -15,6 +16,7 @@ const routes: Routes =[
     declarations:[
         MenuComponent,
         HomeComponent,
+        FilterComponent,
      ],
     imports:[
         RouterModule.forChild(routes),
@@ -23,6 +25,7 @@ const routes: Routes =[
     exports:[
         RouterModule,
         MenuComponent,
+        FilterComponent,
         HomeComponent,
         CommonModule,
     ],

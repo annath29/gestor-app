@@ -13,7 +13,8 @@ declare var bootstrap: any;
 export class ListTaskComponent implements OnInit,AfterViewInit{
   //@Output() id:EventEmitter<any> = new EventEmitter();
   public tasks: Task[] = [];
-  public check:boolean=false;
+  public mostrar: boolean = false;
+  term:any;
   constructor(
     private service: TaskService,
     private router:Router)
@@ -44,11 +45,26 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
   
   complete(task:Task){
     task.state=!task.state;
-    this.service.update(task,task.id);
+    this.service.complete(task,task.id);
   }
 
   delete(id:string){
     this.service.currentId=id;
     this.router.navigateByUrl('/task/delete')
+  }
+  
+  mostrarInput() {
+    this.mostrar = !this.mostrar;
+    if(!this.mostrar){
+      this.getAll()
+    }
+    this.term='';
+  }
+
+  filter(term:boolean){
+    this.service.findByState(term).subscribe((datos)=>{
+      this.tasks=datos;
+    });
+    
   }
 }

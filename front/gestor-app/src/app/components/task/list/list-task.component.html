@@ -1,14 +1,20 @@
 <div class="conteiner mt-5">
-    <div class="row mt-5 justify-content-center">
+    <div class="row my-5 justify-content-center">
         <h1 class="color-text">Lista de Tareas</h1>
     </div>
-    <div class="row mt-5 justify-content-center">
+    <div *ngIf="mostrar" class="row justify-content-end mx-5">
+      <input type="text" [(ngModel)]="term" (keyup.enter)="filter(term)">
+    </div>
+    <div class="row justify-content-center">
         <table class="table mx-5 table-bordered">
             <thead class="text-center">
               <tr>
                 <th class="col-3 text-center color-text">Titulo</th>
                 <th class="col-3 text-center color-text">Descripción</th>
-                <th class="col-3 text-center color-text">Estado</th>
+                <th class="col-3 text-center color-text">Estado <em (click)="mostrarInput()" [ngClass]="{
+                  'bi bi bi-funnel':!mostrar,
+                  'bi bi bi-funnel-fill color-text':mostrar,
+                }" ></em></th>
                 <th class="col text-center color-text">Acciones</th>
               </tr>
             </thead>

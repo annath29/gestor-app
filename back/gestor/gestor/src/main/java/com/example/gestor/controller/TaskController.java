@@ -52,7 +52,22 @@ public class TaskController {
     public Task findTaskById(@PathVariable UUID id) throws Exception {
        return service.findTaskById(id);
     }
+    @GetMapping("/filter/{state}")
+    public List<Task> findByState(@PathVariable boolean state){
+            return service.findByState(state);
+    }
 
+    /**
+     * task complete
+     * @param task
+     * @param id
+     * @return task
+     * @throws Exception
+     */
+   @PutMapping("/complete/{id}")
+   public Task complete(@Validated @RequestBody Task task,@PathVariable UUID id) throws Exception {
+       return service.completeTask(task,id);                                                         
+   }
     /**
      * Update a task
      * @param task

@@ -21,6 +21,10 @@ export class FormComponent {
       description:this.descripcion
     });
     //this.router.navigateByUrl('/task/list');  
+   this.close();
+  }
+
+  close(){
     window.location.href = '/task/list';
   }
 

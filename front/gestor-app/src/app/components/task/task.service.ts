@@ -29,10 +29,21 @@ export class TaskService {
     return this.http.get<Task>(url);
   }
 
+  findByState(state:boolean):Observable<Task[]>{
+    const url = `${this.apiUrl}/filter/${state}`;
+    return this.http.get<Task[]>(url);
+  }
+
   update(task:Task,id:String):Observable<Task>{
     const url = `${this.apiUrl}/${id}`;  
     return this.http.put<Task>(url,task);
   }
+
+  complete(task:Task,id:String):Observable<Task>{
+    const url = `${this.apiUrl}/complete/${id}`;  
+    return this.http.put<Task>(url,task);
+  }
+
   delete(id:String):Observable<boolean>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<boolean>(url)
