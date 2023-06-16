@@ -39,8 +39,18 @@ public class TaskController {
      */
     @PostMapping
     public Task create(@Validated @RequestBody Task task) throws Exception {
-
         return service.saveTask(task);
+    }
+
+    /**
+     *  find by id a task
+     * @param id
+     * @return a Task
+     * @throws Exception
+     */
+    @GetMapping("/{id}")
+    public Task findTaskById(@PathVariable UUID id) throws Exception {
+       return service.findTaskById(id);
     }
 
     /**

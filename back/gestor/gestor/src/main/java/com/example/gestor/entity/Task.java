@@ -23,13 +23,13 @@ public class Task {
      * attributes of a task
      */
     @Size(max=50)
-    @Column(name="Title",nullable = false)
+    @Column(name="title",nullable = false)
     private String title;
 
     @Size(max=90)
     @Column(nullable = false)
     private String description;
-    @Column(nullable = false)
+
     private Boolean state;
 
     public Task() {

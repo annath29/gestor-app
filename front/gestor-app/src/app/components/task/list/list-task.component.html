@@ -19,15 +19,23 @@
                 <td class="col-3 text-center align-middle">{{task.state}}</td>
                 <td class="col  text-center align-middle">
                   <em [ngClass]="{
-                    'bi bi-bookmark-check':'{{task.state}}',
-                    'bi bi-bookmark-check-fill':!'{{task.state}}',
-                  }"  class="mx-1 fontIcon " data-bs-toggle="tooltip" title="Marcar completada" ></em>
-                  <em class="mx-1 fontIcon bi bi-pencil-square" data-bs-toggle="tooltip" title="Editar"></em>
-                  <em class="mx-1 fontIcon bi-x-square" data-bs-toggle="tooltip" title="Eliminar"></em>
+                    'bi bi-bookmark-check':!task.state,
+                    'bi bi-bookmark-check-fill color-text':task.state,
+                  }" 
+                  (click)="complete(task)"
+                  class="mx-1 fontIcon " 
+                  data-bs-toggle="tooltip" 
+                  title="Marcar completada"
+                 ></em>
+                  <em (click)="update(task.id)"  class="mx-1 fontIcon bi bi-pencil-square" data-bs-toggle="tooltip" title="Editar"></em>
+                  <em (click)="delete(task.id)" class="mx-1 fontIcon bi-x-square" data-bs-toggle="tooltip" title="Eliminar"></em>
                 </td>
               </tr>
             </tbody>
-          </table>
+        </table>
+        <div *ngIf="!tasks.length">
+          <h3>No se encontraron tareas</h3>
+        </div>
     </div>
 </div> 
 

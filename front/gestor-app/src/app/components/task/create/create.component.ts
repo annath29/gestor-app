@@ -16,6 +16,7 @@ export class CreateComponent {
    // console.log("descripcion",data.description);    
 
     this.tarea={
+      id:"",
       title:data.title,
       description:data.description,
       state:false

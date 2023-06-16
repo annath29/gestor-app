@@ -14,7 +14,7 @@ public class GestorApplication {
 	}
 
 
-	@Bean
+	/*@Bean
 	public WebMvcConfigurer corsConfigure(){
 		return new WebMvcConfigurer() {
 			@Override
@@ -22,5 +22,5 @@ public class GestorApplication {
 				registry.addMapping("/**").allowedOrigins("*");
 			}
 		};
-	}
+	}*/
 }

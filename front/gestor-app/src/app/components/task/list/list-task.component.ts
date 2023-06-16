@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var bootstrap: any;
 
@@ -11,9 +11,9 @@ declare var bootstrap: any;
 })
 
 export class ListTaskComponent implements OnInit,AfterViewInit{
-
+  //@Output() id:EventEmitter<any> = new EventEmitter();
   public tasks: Task[] = [];
-  public check:boolean=true;
+  public check:boolean=false;
   constructor(
     private service: TaskService,
     private router:Router)
@@ -32,8 +32,23 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
   
   getAll() {
     this.service.getAll().subscribe((tasks)=>{
-      this.tasks=tasks;     
+      this.tasks=tasks; 
       // console.log(tasks)
     });
+  }
+
+  update(id:any){
+    this.service.currentId=id;
+    this.router.navigateByUrl('/task/update');
+  }
+  
+  complete(task:Task){
+    task.state=!task.state;
+    this.service.update(task,task.id);
+  }
+
+  delete(id:string){
+    this.service.currentId=id;
+    this.router.navigateByUrl('/task/delete')
   }
 }

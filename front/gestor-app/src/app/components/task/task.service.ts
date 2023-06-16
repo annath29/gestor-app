@@ -8,6 +8,7 @@ import { Task } from './task.model';
 })
 export class TaskService {
 
+  public currentId:any;
  
   private apiUrl:string='http://localhost:8080/api-task'
 
@@ -18,17 +19,21 @@ export class TaskService {
   }
 
   save(task:Task):Observable<Task>{
-    console.log(task);
-    var resultado= this.http.post<Task>(this.apiUrl,task);
-    console.log(resultado);
-    
+   
+    var resultado= this.http.post<Task>(this.apiUrl,task);    
     return resultado;
   }
-  update(task:Task,id:String):Observable<Task>{
+
+  findById(id:String):Observable<Task>{
     const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Task>(url);
+  }
+
+  update(task:Task,id:String):Observable<Task>{
+    const url = `${this.apiUrl}/${id}`;  
     return this.http.put<Task>(url,task);
   }
-  delete(id:string):Observable<boolean>{
+  delete(id:String):Observable<boolean>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<boolean>(url)
     }

@@ -10,19 +10,18 @@ import { Router } from '@angular/router';
 export class FormComponent {
   @Input() name!:String;
   @Output() data: EventEmitter<any> = new EventEmitter()
-  titulo!:String;
-  descripcion!: String;
-
-  constructor(private service: TaskService,
-    private router:Router){}
+  @Input() titulo!:String;
+  @Input() descripcion!: String;
+  
+  constructor(private router:Router){}
   
   submitForm() {
     this.data.emit({
       title:this.titulo,
       description:this.descripcion
     });
-    this.router.navigateByUrl('/task/list');
-  
+    //this.router.navigateByUrl('/task/list');  
+    window.location.href = '/task/list';
   }
 
 }

@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
 import { SharedModule } from "../shared/shared.module";
 import { FormComponent } from "./form/form.component";
+import { UpdateComponent } from './update/update.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 const routes: Routes =[
@@ -16,6 +18,14 @@ const routes: Routes =[
     {
         path:'new',
         component:CreateComponent,
+    },
+    {
+        path:'update',
+        component:UpdateComponent,
+    },
+    {
+        path:'delete',
+        component:DeleteComponent,
     }
 ]
 
@@ -30,7 +40,9 @@ const routes: Routes =[
     declarations:[
         ListTaskComponent,
         CreateComponent,
-        FormComponent
+        FormComponent,
+        UpdateComponent,
+        DeleteComponent
     ],
 })
 

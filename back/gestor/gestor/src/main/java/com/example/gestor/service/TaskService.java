@@ -3,6 +3,7 @@ package com.example.gestor.service;
 import com.example.gestor.entity.Task;
 import com.example.gestor.repository.ITaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class TaskService {
      * @return list of task
      */
     public List<Task> findAll(){
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.ASC,"title"));
     }
 
     /**
@@ -51,6 +52,21 @@ public class TaskService {
         catch (Exception error){
             throw new Exception(error.getMessage());
         }
+    }
+
+
+    /**
+     * Find a task by id
+     * @param id
+     * @return a task
+     * @throws Exception
+     */
+    public Task findTaskById(UUID id) throws Exception {
+        var found= repository.findById(id).orElse(null);
+        if (found==null){
+            throw  new Exception("id no encontrado");
+        }
+        return found;
     }
 
     /**
@@ -71,7 +87,7 @@ public class TaskService {
         var exist=repository.findById(id).orElseThrow();
         exist.setTitle(task.getTitle());
         exist.setDescription(task.getDescription());
-
+        exist.setState(task.getState());
         return repository.save(exist);
     }
 
