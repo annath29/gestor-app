@@ -16,6 +16,8 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
   @Input() state!:string;
   public mostrar: boolean = false;
   term:any;
+  selected:boolean=true;
+
   constructor(
     private service: TaskService,
     private router:Router)

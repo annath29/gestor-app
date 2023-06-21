@@ -3,7 +3,10 @@
         <h1 class="color-text">Lista de Tareas</h1>
     </div>
     <div *ngIf="mostrar" class="row justify-content-end mx-5">
-      <input type="text" [(ngModel)]="term" (keyup.enter)="filter(term)">
+      <select [(ngModel)]="term" (click)="filter(term)">
+        <option value="true">Completadas</option>
+        <option value="false">Pendientes</option>
+      </select>
     </div>
     <div class="row justify-content-center">
         <table class="table mx-5 table-bordered">
