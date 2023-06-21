@@ -23,6 +23,10 @@ export class CreateComponent {
     }
 
     this.service.save(this.tarea).subscribe();
-    
+    this.cancel();
+  }
+
+  cancel(){
+    window.location.href = '/task/list';
   }
 }

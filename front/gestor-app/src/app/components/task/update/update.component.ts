@@ -12,12 +12,16 @@ export class UpdateComponent implements OnInit {
   @Output() name:String='Editar Tarea';
   @Output() titulo!:String;
   @Output() descripcion!:String;
+  @Output() message:String="editar";
+
+  continue!:boolean;
   
   tarea!:Task;
 
   constructor(private service: TaskService){}
 
   ngOnInit(){
+    this.continue=false;
     this.id=this.service.currentId;
      this.service.findById(this.id).subscribe((dato)=>{ 
      this.descripcion=dato.description
@@ -25,15 +29,25 @@ export class UpdateComponent implements OnInit {
      })
   }
 
-  update(data:Task){    
+  update(){    
+    this.service.update(this.tarea,this.id).subscribe();  
+    this.cancel();
+  }
+
+  complete(data:Task)
+  {
     this.id=this.service.currentId;
-    
     this.tarea={
-      id:this.id,
-      title:data.title,
-      description:data.description,      
+       id:this.id,
+       title:data.title,
+       description:data.description,      
     }
 
-    this.service.update(this.tarea,this.id).subscribe();       
+    this.continue=true;
+  }
+
+  cancel(){
+    console.log("cancel")
+    window.location.href = '/task/list';
   }
 }

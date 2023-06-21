@@ -2,8 +2,15 @@
 [name]='name'
 [titulo]='titulo'
 [descripcion]='descripcion'
-(data)="update($event)"
+(data)="complete($event)"
+(close)="cancel()"
+*ngIf="!continue"
 ></app-form>
 
-
+<app-confirmation *ngIf="continue"
+    (accepted)="update()"
+    (close)="cancel()"
+    [component]="message"
+>
+</app-confirmation>
 
