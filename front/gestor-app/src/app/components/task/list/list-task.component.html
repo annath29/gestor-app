@@ -22,7 +22,10 @@
               <tr *ngFor="let task of tasks">
                 <td class="col-3 text-center align-middle">{{task.title}}</td>
                 <td class="col-3 text-center align-middle">{{task.description}}</td>
-                <td class="col-3 text-center align-middle">{{task.state}}</td>
+                <td class="col-3 text-center align-middle" > 
+                  <p *ngIf="task.state" class="text-center text-success ">Completada</p>
+                  <p *ngIf="!task.state" class="text-center text-danger ">Pendiente</p>
+                </td>
                 <td class="col  text-center align-middle">
                   <em [ngClass]="{
                     'bi bi-bookmark-check':!task.state,
