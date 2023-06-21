@@ -2,31 +2,21 @@ import { Component, NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MenuComponent } from "./menu/menu.component";
-import { HomeComponent } from "./home/home.component";
-import { FilterComponent } from './filter/filter.component';
-
-const routes: Routes =[
-    {
-        path:'',
-        component:HomeComponent,
-    }
-]
+import { ConfirmationComponent } from "./confirmation/confirmation.component";
 
 @NgModule({
     declarations:[
         MenuComponent,
-        HomeComponent,
-        FilterComponent,
+        ConfirmationComponent,
      ],
     imports:[
-        RouterModule.forChild(routes),
+        RouterModule,
         CommonModule,
     ],
     exports:[
         RouterModule,
+        ConfirmationComponent,
         MenuComponent,
-        FilterComponent,
-        HomeComponent,
         CommonModule,
     ],
     

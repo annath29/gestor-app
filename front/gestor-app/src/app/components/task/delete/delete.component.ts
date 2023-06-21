@@ -7,6 +7,7 @@ import { TaskService } from '../task.service';
 })
 export class DeleteComponent {
   id:any;
+  messsage:String="eliminar";
   constructor(private service: TaskService){}
 
   delete(){

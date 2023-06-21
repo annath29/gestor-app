@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class FormComponent {
   @Input() name!:String;
   @Output() data: EventEmitter<any> = new EventEmitter()
+  @Output() close: EventEmitter<any> = new EventEmitter()
   @Input() titulo!:String;
   @Input() descripcion!: String;
   
@@ -21,11 +22,7 @@ export class FormComponent {
       description:this.descripcion
     });
     //this.router.navigateByUrl('/task/list');  
-   this.close();
-  }
-
-  close(){
-    window.location.href = '/task/list';
+  
   }
 
 }
