@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,7 @@ declare var bootstrap: any;
 export class ListTaskComponent implements OnInit,AfterViewInit{
   //@Output() id:EventEmitter<any> = new EventEmitter();
   public tasks: Task[] = [];
+  @Input() state!:string;
   public mostrar: boolean = false;
   term:any;
   constructor(
@@ -64,7 +65,6 @@ export class ListTaskComponent implements OnInit,AfterViewInit{
   filter(term:boolean){
     this.service.findByState(term).subscribe((datos)=>{
       this.tasks=datos;
-    });
-    
+    });    
   }
 }

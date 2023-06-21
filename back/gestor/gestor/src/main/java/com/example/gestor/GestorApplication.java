@@ -12,15 +12,5 @@ public class GestorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestorApplication.class, args);
 	}
-
-
-	/*@Bean
-	public WebMvcConfigurer corsConfigure(){
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*");
-			}
-		};
-	}*/
+	    
 }

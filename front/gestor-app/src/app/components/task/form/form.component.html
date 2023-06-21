@@ -10,7 +10,12 @@
             <input type="text" name="descripcion" placeholder="Ingrese la descripción"  [(ngModel)]="descripcion" class="form-control" maxlength="90">
         </div>
         <div class="row justify-content-center mb-5">
-            <button type="submit" class="btn btn-primary btn-lg" (click)="submitForm()">Guardar</button>
+            <div class="col-6 d-flex justify-content-center">
+                <button type="submit" class="w-75 btn btn-primary btn-lg" (click)="submitForm()">Guardar</button>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <button type="button" class="w-75 btn btn-primary btn-lg" (click)="close()">Cancelar</button>
+            </div>
         </div>
     </div>
 </form>
